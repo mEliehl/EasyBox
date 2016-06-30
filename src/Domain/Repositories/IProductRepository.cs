@@ -6,6 +6,7 @@ namespace Domain.Repositories
 {
     public interface IProductRepository
     {
-        Task<Product> GetById(Guid Id);
+        Task<Product> Get(Guid Id);
+        Task Save(Product product);
     }
 }

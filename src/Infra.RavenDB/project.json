@@ -1,0 +1,21 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "NETStandard.Library": "1.6.0",
+    "Domain": {
+      "version": "1.0.0-*",
+      "target": "project"
+    },
+    "RavenDB.Client": {
+      "version": "3.5.35132-Unstable",
+      "suppressParent": "all"
+    }
+  },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  }
+}
