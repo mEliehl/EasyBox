@@ -1,1 +1,2 @@
-# EasyBox
+# EasyBox 
+# dotnet core + RavenDB + SimpleInjector

@@ -12,6 +12,7 @@ namespace Application.Test.Products
 {
     public class CreateNewProductHandlerTest
     {
+        readonly IUnitOfWork unitOfWork;
         readonly IProductRepository productRepository;
 
         public CreateNewProductHandlerTest()
@@ -22,11 +23,10 @@ namespace Application.Test.Products
         [Fact]
         public async void ShouldCreateNewProduct()
         {
-            var command = new CreateNewProduct();
+            var command = new CreateNewProduct(Guid.NewGuid(),
+            "USB-128",
+            "Pendrive USB 128GB");
 
-            command.Id = Guid.NewGuid();
-            command.Code = "USB-128";
-            command.Name = "Pendrive USB 128GB";
             ICommandHandler<CreateNewProduct> handler = new CreateNewProductHandler(productRepository);
             await handler.ExecuteAsync(command);
 

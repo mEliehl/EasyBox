@@ -8,10 +8,20 @@ namespace Application.Products
 {
     public class CreateNewProduct
     {
-        public Guid Id { get; set; }
-        public string Code { get; set; }
-        public string Name { get; set; }
+        public CreateNewProduct(Guid Id,
+            string Code,
+            String Name)
+        {
+            this.Id = Id;
+            this.Code = Code;
+            this.Name = Name;
+        }
+
+        public Guid Id { get; private set; }
+        public string Code { get; private set; }
+        public string Name { get; private set; }
     }
+
     public class CreateNewProductHandler : ICommandHandler<CreateNewProduct>
     {
         readonly IProductRepository productRepository;

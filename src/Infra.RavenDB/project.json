@@ -8,8 +8,7 @@
       "target": "project"
     },
     "RavenDB.Client": {
-      "version": "3.5.35132-Unstable",
-      "suppressParent": "all"
+      "version": "3.5.0-rc-35166"      
     }
   },
 

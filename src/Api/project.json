@@ -10,10 +10,11 @@
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "Microsoft.AspNetCore.Mvc": "1.0.0",
-    "Domain": {
+    "CompositionRoot": {
       "version": "1.0.0-*",
       "target": "project"
-    }
+    },
+    "SimpleInjector.Integration.AspNetCore.Mvc": "3.2.3"
   },
 
   "frameworks": {

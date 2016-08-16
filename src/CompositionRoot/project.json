@@ -1,0 +1,27 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "NETStandard.Library": "1.6.0",
+    "SimpleInjector": "3.2.0",
+    "SimpleInjector.Extensions.ExecutionContextScoping": "3.2.0",
+    "Domain": {
+      "version": "1.0.0-*",
+      "target": "project"
+    },
+    "Infra.RavenDB": {
+      "version": "1.0.0-*",
+      "target": "project"      
+    },
+    "Application": {
+      "version": "1.0.0-*",
+      "target": "project"      
+    }
+  },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  }
+}

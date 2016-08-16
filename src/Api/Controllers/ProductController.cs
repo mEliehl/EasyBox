@@ -1,8 +1,7 @@
-﻿using Domain.Entities;
+﻿using Application.Interfaces;
+using Application.Products;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Api.Controllers
@@ -10,18 +9,19 @@ namespace Api.Controllers
     [Route("api/[controller]")]
     public class ProductController
     {
-        readonly IList<Product> products;
+        readonly ICommandHandler<CreateNewProduct> createNewProduct;
 
-        public ProductController()
+        public ProductController(ICommandHandler<CreateNewProduct> createNewProduct)
         {
-            products = new List<Product>();
-            products.Add(new Product(Guid.NewGuid(), "usb-128", "Pendrive USB 128Gb"));
+            this.createNewProduct = createNewProduct;
         }
 
         [HttpGet]
-        public async Task<Product> Get()
+        public async Task<string> Get()
         {
-            return products.FirstOrDefault();
+            var command = new CreateNewProduct(Guid.NewGuid(), "USB", "Pen-Drive 120gb");
+            await createNewProduct.ExecuteAsync(command);
+            return "so pra testae";
         }
     }
 }
