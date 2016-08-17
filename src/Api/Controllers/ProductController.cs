@@ -1,4 +1,5 @@
-﻿using Application.Interfaces;
+﻿using Api.ViewModels;
+using Application.Interfaces;
 using Application.Products;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,18 +11,33 @@ namespace Api.Controllers
     public class ProductController
     {
         readonly ICommandHandler<CreateNewProduct> createNewProduct;
+        readonly ICommandHandler<ChangeProduct> changeProduct;
 
-        public ProductController(ICommandHandler<CreateNewProduct> createNewProduct)
+        public ProductController(ICommandHandler<CreateNewProduct> createNewProduct,
+            ICommandHandler<ChangeProduct> changeProduct)
         {
             this.createNewProduct = createNewProduct;
+            this.changeProduct = changeProduct;
         }
 
-        [HttpGet]
-        public async Task<string> Get()
+        [HttpGet("{id:Guid}")]
+        public async Task<string> Get(Guid id)
         {
-            var command = new CreateNewProduct(Guid.NewGuid(), "USB", "Pen-Drive 120gb");
+            return id.ToString();
+        }
+
+        [HttpPost]
+        public async Task Post(NewProductViewModel viewModel)
+        {
+            var command = new CreateNewProduct(viewModel.Id, viewModel.Code, viewModel.Name);
             await createNewProduct.ExecuteAsync(command);
-            return "so pra testae";
+        }
+
+        [HttpPut]
+        public async Task Put(ChangeProductViewModel viewModel)
+        {
+            var command = new ChangeProduct(viewModel.Id, viewModel.Code, viewModel.Name);
+            await changeProduct.ExecuteAsync(command);
         }
     }
 }

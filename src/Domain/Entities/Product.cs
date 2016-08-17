@@ -16,5 +16,15 @@ namespace Domain.Entities
             this.Code = Code;
             this.Name = Name;
         }
+
+        public void ChangeName(string name)
+        {
+            this.Name = name;
+        }
+
+        public void ChangeCode(string code)
+        {
+            this.Code = code;
+        }
     }
 }

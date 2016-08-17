@@ -15,5 +15,23 @@ namespace Domain.Test.Entities
             Assert.NotEqual(p.Code, string.Empty);
             Assert.NotEqual(p.Name, string.Empty);
         }
+
+        [Fact]
+        public void ShouldCreateProductAndChangeName()
+        {
+            var p = new Product(Guid.NewGuid(), "USB-128", "Pendrive usb 128gb");
+            var newName = "Pendrive usb 128gb(2)";
+            p.ChangeName(newName);
+            Assert.Equal(p.Name, newName);
+        }
+
+        [Fact]
+        public void ShouldCreateProductAndChangeCode()
+        {
+            var p = new Product(Guid.NewGuid(), "USB-128", "Pendrive usb 128gb");
+            var newCode = "USB-128(2)";
+            p.ChangeName(newCode);
+            Assert.Equal(p.Name, newCode);
+        }
     }
 }

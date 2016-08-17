@@ -18,6 +18,8 @@ namespace Infra.InMemoryDB.Repositories
 
         public async Task Save(Product product)
         {
+            if (products.Any(p => p.Id == product.Id))
+                products.Remove(products.FirstOrDefault(p => p.Id == product.Id));
             products.Add(product);
         }
     }

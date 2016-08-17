@@ -12,7 +12,6 @@ namespace Application.Test.Products
 {
     public class CreateNewProductHandlerTest
     {
-        readonly IUnitOfWork unitOfWork;
         readonly IProductRepository productRepository;
 
         public CreateNewProductHandlerTest()
