@@ -11,11 +11,15 @@
     },
     "Infra.RavenDB": {
       "version": "1.0.0-*",
-      "target": "project"      
+      "target": "project"
     },
     "Application": {
       "version": "1.0.0-*",
-      "target": "project"      
+      "target": "project"
+    },
+    "ReadModel": {
+      "version": "1.0.0-*",
+      "target": "project"
     }
   },
 

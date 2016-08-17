@@ -2,6 +2,7 @@
 using Application.Interfaces;
 using Domain.Repositories;
 using Infra.RavenDB.Repositories;
+using ReadModel;
 using SimpleInjector;
 using SimpleInjector.Extensions.ExecutionContextScoping;
 using System.Reflection;
@@ -22,7 +23,8 @@ namespace CompositionRoot
                 new[] { typeof(ICommandHandler<>).GetTypeInfo().Assembly });
 
             container.RegisterDecorator(typeof(ICommandHandler<>), typeof(TransactionHandler<>));
-
+            container.Register(typeof(IQueryHandler<,>),
+                new[] { typeof(IQueryHandler<,>).GetTypeInfo().Assembly });
 
             return container;
         }
