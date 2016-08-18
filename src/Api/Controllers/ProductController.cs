@@ -26,25 +26,52 @@ namespace Api.Controllers
         }
 
         [HttpGet("{id:Guid}")]
-        public async Task<string> Get(Guid id)
+        public async Task<IActionResult> Get(Guid id)
         {
-            var query = new FindProductByIdQuery(id);
-            var info = await findProductByIdQuery.HandleAsync(query);
-            return info.FullDescription;
+            try
+            {
+                var query = new FindProductByIdQuery(id);
+                var info = await findProductByIdQuery.HandleAsync(query);
+                if (info == null)
+                    return new NotFoundResult();
+
+                return new OkObjectResult(info);
+            }
+            catch (Exception ex)
+            {
+                return new BadRequestObjectResult(ex);
+            }
         }
 
         [HttpPost]
-        public async Task Post(NewProductViewModel viewModel)
+        public async Task<IActionResult> Post(NewProductViewModel viewModel)
         {
-            var command = new CreateNewProduct(viewModel.Id, viewModel.Code, viewModel.Name);
-            await createNewProduct.ExecuteAsync(command);
+            try
+            {
+                var command = new CreateNewProduct(viewModel.Id, viewModel.Code, viewModel.Name);
+                await createNewProduct.ExecuteAsync(command);
+
+                return new OkResult();
+            }
+            catch (Exception ex)
+            {
+                return new BadRequestObjectResult(ex);
+            }
         }
 
         [HttpPut]
-        public async Task Put(ChangeProductViewModel viewModel)
+        public async Task<IActionResult> Put(ChangeProductViewModel viewModel)
         {
-            var command = new ChangeProduct(viewModel.Id, viewModel.Code, viewModel.Name);
-            await changeProduct.ExecuteAsync(command);
+            try
+            {
+                var command = new ChangeProduct(viewModel.Id, viewModel.Code, viewModel.Name);
+                await changeProduct.ExecuteAsync(command);
+                return new OkResult();
+            }
+            catch (Exception ex)
+            {
+                return new BadRequestObjectResult(ex);
+            }
         }
     }
 }

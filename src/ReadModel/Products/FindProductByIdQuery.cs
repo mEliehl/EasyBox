@@ -1,5 +1,6 @@
 ﻿using Domain.Repositories;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ReadModel.Products
@@ -25,12 +26,16 @@ namespace ReadModel.Products
         public async Task<ProductInfo> HandleAsync(FindProductByIdQuery query)
         {
             var product = await productRepository.Get(query.Id);
-            return new ProductInfo()
+            if (product != null)
             {
-                Id = product.Id,
-                Code = product.Code,
-                Name = product.Name
-            };
+                return new ProductInfo()
+                {
+                    Id = product.Id,
+                    Code = product.Code,
+                    Name = product.Name
+                };
+            }
+            return null;
         }
     }
 }
