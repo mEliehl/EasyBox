@@ -17,7 +17,7 @@ namespace ReadModel.Test.Products
         }
 
         [Fact]
-        public async void ShouldCreateNewProduct()
+        public async void ShouldCreateProductCallQueryAndReturnProductInfo()
         {
             var product = new Product(Guid.NewGuid(), "Code", "Name");
             await productRepository.Save(product);
@@ -30,6 +30,15 @@ namespace ReadModel.Test.Products
             Assert.Equal(productInfo.Name, product.Name);
             Assert.Contains(product.Code, productInfo.FullDescription);
             Assert.Contains(product.Name, productInfo.FullDescription);
+        }
+
+        [Fact]
+        public async void ShouldCallQueryWithInvalidIdAndReturnNull()
+        {
+            var query = new FindProductByIdQuery(Guid.NewGuid());
+            IQueryHandler<FindProductByIdQuery, ProductInfo> handler = new FindProductByIdQueryHandler(productRepository);
+            var productInfo = await handler.HandleAsync(query);
+            Assert.Null(productInfo);            
         }
     }
 }
