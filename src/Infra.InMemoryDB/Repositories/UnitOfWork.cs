@@ -1,7 +1,4 @@
 ﻿using Domain.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Infra.InMemoryDB.Repositories
@@ -10,7 +7,7 @@ namespace Infra.InMemoryDB.Repositories
     {
         public async Task Commit()
         {
-            
+           await Task.Factory.StartNew(() => 1 + 1);
         }
 
         public void Dispose()

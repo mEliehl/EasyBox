@@ -13,14 +13,17 @@ namespace Infra.InMemoryDB.Repositories
 
         public async Task<Product> Get(Guid Id)
         {
-            return products.FirstOrDefault(w => w.Id == Id);
+            return await Task.Factory.StartNew(() => products.FirstOrDefault(w => w.Id == Id));
         }
 
         public async Task Save(Product product)
         {
-            if (products.Any(p => p.Id == product.Id))
-                products.Remove(products.FirstOrDefault(p => p.Id == product.Id));
-            products.Add(product);
+            await Task.Factory.StartNew(() =>
+            {
+                if (products.Any(p => p.Id == product.Id))
+                    products.Remove(products.FirstOrDefault(p => p.Id == product.Id));
+                products.Add(product);
+            });
         }
     }
 }
