@@ -66,14 +66,15 @@ Task("Publish")
     .IsDependentOn("Run-Unit-Tests")
     .Does(() =>
 {
-    // var projects = GetFiles("./src/api/*.xproj");
-    // foreach(var project in projects)
-    // {
-    //     DotNetCorePublish(project.GetDirectory().FullPath, new DotNetCorePublishSettings
-    //     {
-    //         OutputDirectory = buildDir            
-    //     });
-    // }
+    var projects = GetFiles("./src/api/*.xproj");
+    foreach(var project in projects)
+    {
+        DotNetCorePublish(project.GetDirectory().FullPath, new DotNetCorePublishSettings
+        {
+            OutputDirectory = buildDir,
+            NoBuild = false   
+        });
+    }
 });
 
 //////////////////////////////////////////////////////////////////////
