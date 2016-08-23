@@ -30,8 +30,8 @@ namespace Domain.Test.Entities
         {
             var p = new Product(Guid.NewGuid(), "USB-128", "Pendrive usb 128gb");
             var newCode = "USB-128(2)";
-            p.ChangeName(newCode);
-            Assert.Equal(p.Name, newCode);
+            p.ChangeCode(newCode);
+            Assert.Equal(p.Code, newCode);
         }
     }
 }
