@@ -85,7 +85,7 @@ Task("Run-Unit-Tests")
         {
             CoverallsIo(artifactsDir.ToString() + "/result.xml",new CoverallsIoSettings()
             {
-                RepoToken = EnvironmentVariable("COVERALLS_REPO_TOKEN");
+                RepoToken = EnvironmentVariable("COVERALLS_REPO_TOKEN")
             });
         }
     }

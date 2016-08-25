@@ -4,9 +4,6 @@ using Domain.Entities;
 using Domain.Repositories;
 using Infra.InMemoryDB.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Application.Test.Products
