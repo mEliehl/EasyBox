@@ -1,4 +1,7 @@
 version: 1.0.{build}
+environment:
+  COVERALLS_REPO_TOKEN:
+    secure: lpXzghe8L/wM3/j42TM6569Di5WAOyozN72o2gilWOl7gTKHIUkya0erOG6Y7zyi
 build_script:
 - ps: .\build.ps1
 test: off

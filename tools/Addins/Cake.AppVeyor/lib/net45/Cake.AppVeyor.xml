@@ -1,0 +1,790 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cake.AppVeyor</name>
+    </assembly>
+    <members>
+        <member name="T:Cake.AppVeyor.AppVeyorAliases">
+            <summary>
+            AppVeyor API related cake aliases.
+            </summary>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorClearCache(Cake.Core.ICakeContext,Cake.AppVeyor.AppVeyorSettings,System.String,System.String)">
+            <summary>
+            Clears the AppVeyor Cache
+            </summary>
+            <returns>The projects.</returns>
+            <param name="context">The context.</param>
+            <param name="settings">The settings.</param>
+            <param name="accountName">The account name.</param>
+            <param name="projectSlug">The project slug.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorClearCache(Cake.Core.ICakeContext,System.String,System.String,System.String)">
+            <summary>
+            Gets all projects
+            </summary>
+            <returns>The projects.</returns>
+            <param name="context">The context.</param>
+            <param name="appVeyorApiToken">The API Token.</param>
+            <param name="accountName">The account name.</param>
+            <param name="projectSlug">The project slug.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorProjects(Cake.Core.ICakeContext,Cake.AppVeyor.AppVeyorSettings)">
+            <summary>
+            Gets all projects
+            </summary>
+            <returns>The projects.</returns>
+            <param name="context">The context.</param>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorProjects(Cake.Core.ICakeContext,System.String)">
+            <summary>
+            Gets all projects
+            </summary>
+            <returns>The projects.</returns>
+            <param name="context">The context.</param>
+            <param name="appVeyorApiToken">The API Token.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorProjectHistory(Cake.Core.ICakeContext,Cake.AppVeyor.AppVeyorSettings,System.String,System.String,System.Int32,System.Nullable{System.Int32},System.String)">
+            <summary>
+            Gets the project build history
+            </summary>
+            <returns>The project build history.</returns>
+            <param name="context">The context.</param>
+            <param name="settings">The settings.</param>
+            <param name="accountName">The account name.</param>
+            <param name="projectSlug">The project slug.</param>
+            <param name="recordsPerPage">The number of records to return.</param>
+            <param name="startBuildId">The build identifier to start returning records after.</param>
+            <param name="branch">The branch.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorProjectHistory(Cake.Core.ICakeContext,System.String,System.String,System.String,System.Int32,System.Nullable{System.Int32},System.String)">
+            <summary>
+            Gets the project build history
+            </summary>
+            <returns>The project build history.</returns>
+            <param name="context">The context.</param>
+            <param name="appVeyorApiToken">The API Token.</param>
+            <param name="accountName">The account name.</param>
+            <param name="projectSlug">The project slug.</param>
+            <param name="recordsPerPage">The number of records to return.</param>
+            <param name="startBuildId">The build identifier to start returning records after.</param>
+            <param name="branch">The branch.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorProjectLastBuild(Cake.Core.ICakeContext,Cake.AppVeyor.AppVeyorSettings,System.String,System.String)">
+            <summary>
+            Gets the last build of the project
+            </summary>
+            <returns>The project's last build.</returns>
+            <param name="context">The context.</param>
+            <param name="settings">The settings.</param>
+            <param name="accountName">The account name.</param>
+            <param name="projectSlug">The project slug.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorProjectLastBuild(Cake.Core.ICakeContext,System.String,System.String,System.String)">
+            <summary>
+            Gets the last build of the project
+            </summary>
+            <returns>The project's last build.</returns>
+            <param name="context">The context.</param>
+            <param name="appVeyorApiToken">The API Token.</param>
+            <param name="accountName">The account name.</param>
+            <param name="projectSlug">The project slug.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorProjectLastSuccessfulBuild(Cake.Core.ICakeContext,Cake.AppVeyor.AppVeyorSettings,System.String,System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Gets the last successful build of the project
+            </summary>
+            <returns>The project's last successful build.</returns>
+            <param name="context">The context.</param>
+            <param name="settings">The settings.</param>
+            <param name="accountName">The account name.</param>
+            <param name="projectSlug">The project slug.</param>
+            <param name="branch">The branch.</param>
+            <param name="beforeBuildId">The build identifier to start looking for a successful build after.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorProjectLastSuccessfulBuild(Cake.Core.ICakeContext,System.String,System.String,System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Gets the last successful build of the project
+            </summary>
+            <returns>The project's last successful build.</returns>
+            <param name="context">The context.</param>
+            <param name="appVeyorApiToken">The API Token.</param>
+            <param name="accountName">The account name.</param>
+            <param name="projectSlug">The project slug.</param>
+            <param name="branch">The branch.</param>
+            <param name="beforeBuildId">The build identifier to start looking for a successful build after.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorProjectLastBranchBuild(Cake.Core.ICakeContext,System.String,System.String,System.String,System.String)">
+            <summary>
+            Gets the last build on the specified branch of the project 
+            </summary>
+            <returns>The project's last successful build on the branch.</returns>
+            <param name="context">The context.</param>
+            <param name="appVeyorApiToken">The API Token.</param>
+            <param name="accountName">The account name.</param>
+            <param name="projectSlug">The project slug.</param>
+            <param name="branch">The branch.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorProjectBuildByVersion(Cake.Core.ICakeContext,System.String,System.String,System.String,System.String)">
+            <summary>
+            Gets the project build by version
+            </summary>
+            <returns>The veyor project build by version.</returns>
+            <param name="context">The context.</param>
+            <param name="appVeyorApiToken">The API token.</param>
+            <param name="accountName">The account name.</param>
+            <param name="projectSlug">The project slug.</param>
+            <param name="buildVersion">The build version.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorStartBuildLatestCommit(Cake.Core.ICakeContext,System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Starts a build from the latest commit
+            </summary>
+            <returns>The build that was started.</returns>
+            <param name="context">The context.</param>
+            <param name="appVeyorApiToken">The API token.</param>
+            <param name="accountName">The account name.</param>
+            <param name="projectSlug">The project slug.</param>
+            <param name="branch">The branch.</param>
+            <param name="environmentVariables">The environment variables.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorStartBuildSpecificCommit(Cake.Core.ICakeContext,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Starts a build for a specific commit
+            </summary>
+            <returns>The build that was started.</returns>
+            <param name="context">The context.</param>
+            <param name="appVeyorApiToken">The API token.</param>
+            <param name="accountName">The account name.</param>
+            <param name="projectSlug">The project slug.</param>
+            <param name="commitId">The commit hash to build.</param>
+            <param name="branch">The branch.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorStartBuildPullRequest(Cake.Core.ICakeContext,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Starts a build for the given GitHub pull request
+            </summary>
+            <returns>The build that was started.</returns>
+            <param name="context">The context.</param>
+            <param name="appVeyorApiToken">The API token.</param>
+            <param name="accountName">The account name.</param>
+            <param name="projectSlug">The project slug.</param>
+            <param name="pullRequestId">The GitHub pull request id.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorCancelBuild(Cake.Core.ICakeContext,System.String,System.String,System.String,System.String)">
+            <summary>
+            Cancels a build
+            </summary>
+            <param name="context">The context.</param>
+            <param name="appVeyorApiToken">The API token.</param>
+            <param name="accountName">The account name.</param>
+            <param name="projectSlug">The project slug.</param>
+            <param name="buildVersion">The build version of the build to cancel.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorDeployment(Cake.Core.ICakeContext,System.String,System.Int32)">
+            <summary>
+            Gets the specified Deployment
+            </summary>
+            <returns>The deployment.</returns>
+            <param name="context">The context.</param>
+            <param name="appVeyorApiToken">The API token.</param>
+            <param name="deploymentId">The id of the deployment to get.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorProjectDeployments(Cake.Core.ICakeContext,System.String,System.String,System.String)">
+            <summary>
+            Gets the Deployments for a given project
+            </summary>
+            <returns>The project's Deployments.</returns>
+            <param name="context">The context.</param>
+            <param name="appVeyorApiToken">The API token.</param>
+            <param name="accountName">The account name.</param>
+            <param name="projectSlug">The project slug.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorStartDeployment(Cake.Core.ICakeContext,System.String,System.String,System.String,System.String,System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Starts a Deployment
+            </summary>
+            <returns>The deployment that was started.</returns>
+            <param name="context">The context.</param>
+            <param name="appVeyorApiToken">The API token.</param>
+            <param name="accountName">The account name.</param>
+            <param name="projectSlug">The project slug.</param>
+            <param name="environmentName">The environment name to deploy to.</param>
+            <param name="buildVersion">The build version to deploy.</param>
+            <param name="buildJobId">The build job identifier (optional).</param>
+            <param name="environmentVariables">The environment variables.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorCancelDeployment(Cake.Core.ICakeContext,System.String,System.Int32)">
+            <summary>
+            Cancels a Deployment
+            </summary>
+            <param name="context">The context.</param>
+            <param name="appVeyorApiToken">The API token.</param>
+            <param name="deploymentId">The identifier of the Deployment to cancel.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorEnvironments(Cake.Core.ICakeContext,System.String)">
+            <summary>
+            Gets Environments
+            </summary>
+            <returns>The environments.</returns>
+            <param name="context">The context.</param>
+            <param name="appVeyorApiToken">The API token.</param>
+        </member>
+        <member name="M:Cake.AppVeyor.AppVeyorAliases.AppVeyorEnvironmentDeployments(Cake.Core.ICakeContext,System.String,System.Int32)">
+            <summary>
+            Gets Deployments for the given Environment
+            </summary>
+            <returns>The deployments for the given environment.</returns>
+            <param name="context">The context.</param>
+            <param name="appVeyorApiToken">The API token.</param>
+            <param name="deploymentEnvironmentId">The identifier of the environment to get deployments of.</param>
+        </member>
+        <member name="T:Cake.AppVeyor.AppVeyorSettings">
+            <summary>
+            AppVeyor Settings
+            </summary>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorSettings.ApiToken">
+            <summary>
+            Gets or sets the API token.
+            </summary>
+            <value>The API token.</value>
+        </member>
+        <member name="T:Cake.AppVeyor.NamespaceDoc">
+            <summary>
+            This namespace contain types 
+            representing data used for interaction with AppVeyor's REST API.
+            </summary>
+        </member>
+        <member name="T:Cake.AppVeyor.AppVeyorProject">
+            <summary>
+            Project
+            </summary>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProject.ProjectId">
+            <summary>
+            Gets or sets the project identifier.
+            </summary>
+            <value>The project identifier.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProject.AccountId">
+            <summary>
+            Gets or sets the account identifier.
+            </summary>
+            <value>The account identifier.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProject.AccountName">
+            <summary>
+            Gets or sets the name of the account.
+            </summary>
+            <value>The name of the account.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProject.Builds">
+            <summary>
+            Gets or sets the builds.
+            </summary>
+            <value>The builds.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProject.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProject.Slug">
+            <summary>
+            Gets or sets the slug.
+            </summary>
+            <value>The slug.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProject.RepositoryType">
+            <summary>
+            Gets or sets the type of the repository.
+            </summary>
+            <value>The type of the repository.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProject.RepositoryScm">
+            <summary>
+            Gets or sets the repository SCM.
+            </summary>
+            <value>The repository SCM.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProject.RepositoryName">
+            <summary>
+            Gets or sets the name of the repository.
+            </summary>
+            <value>The name of the repository.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProject.RepositoryBranch">
+            <summary>
+            Gets or sets the repository branch.
+            </summary>
+            <value>The repository branch.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProject.IsPrivate">
+            <summary>
+            Gets or sets a value indicating whether this instance is private.
+            </summary>
+            <value><c>true</c> if this instance is private; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProject.SkipBranchesWithoutAppveyorYml">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Cake.AppVeyor.AppVeyorProject"/> should skip branches
+            without appveyor yml.
+            </summary>
+            <value><c>true</c> if skip branches without appveyor yml; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProject.NuGetFeed">
+            <summary>
+            Gets or sets the nu get feed.
+            </summary>
+            <value>The nu get feed.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProject.Created">
+            <summary>
+            Gets or sets the create time.
+            </summary>
+            <value>The create time.</value>
+        </member>
+        <member name="T:Cake.AppVeyor.AppVeyorBuild">
+            <summary>
+            Build
+            </summary>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.BuildId">
+            <summary>
+            Gets or sets the build identifier.
+            </summary>
+            <value>The build identifier.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.Jobs">
+            <summary>
+            Gets or sets the jobs.
+            </summary>
+            <value>The jobs.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.BuildNumber">
+            <summary>
+            Gets or sets the build number.
+            </summary>
+            <value>The build number.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.Version">
+            <summary>
+            Gets or sets the version.
+            </summary>
+            <value>The version.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.Message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+            <value>The message.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.Branch">
+            <summary>
+            Gets or sets the branch.
+            </summary>
+            <value>The branch.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.CommitId">
+            <summary>
+            Gets or sets the commit identifier (md5 hash).
+            </summary>
+            <value>The commit identifier.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.AuthorName">
+            <summary>
+            Gets or sets the name of the author.
+            </summary>
+            <value>The name of the author.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.AuthorUsername">
+            <summary>
+            Gets or sets the author username.
+            </summary>
+            <value>The author username.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.CommitterName">
+            <summary>
+            Gets or sets the name of the committer.
+            </summary>
+            <value>The name of the committer.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.CommitterUsername">
+            <summary>
+            Gets or sets the committer username.
+            </summary>
+            <value>The committer username.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.Committed">
+            <summary>
+            Gets or sets the time of the commit.
+            </summary>
+            <value>The time of the commit.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.Messages">
+            <summary>
+            Gets or sets the messages.
+            </summary>
+            <value>The messages.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.Status">
+            <summary>
+            Gets or sets the status.
+            </summary>
+            <value>The status.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.Started">
+            <summary>
+            Gets or sets the start time.
+            </summary>
+            <value>The start time.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.Finished">
+            <summary>
+            Gets or sets the finish time.
+            </summary>
+            <value>The finished.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.Created">
+            <summary>
+            Gets or sets the created time.
+            </summary>
+            <value>The created time.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorBuild.Updated">
+            <summary>
+            Gets or sets the updated time.
+            </summary>
+            <value>The updated time.</value>
+        </member>
+        <member name="T:Cake.AppVeyor.AppVeyorDeployment">
+            <summary>
+            Deployment
+            </summary>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorDeployment.DeploymentId">
+            <summary>
+            Gets or sets the deployment identifier.
+            </summary>
+            <value>The deployment identifier.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorDeployment.Build">
+            <summary>
+            Gets or sets the build.
+            </summary>
+            <value>The build.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorDeployment.Environment">
+            <summary>
+            Gets or sets the environment.
+            </summary>
+            <value>The environment.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorDeployment.Jobs">
+            <summary>
+            Gets or sets the jobs.
+            </summary>
+            <value>The jobs.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorDeployment.Status">
+            <summary>
+            Gets or sets the status.
+            </summary>
+            <value>The status.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorDeployment.Started">
+            <summary>
+            Gets or sets the start time.
+            </summary>
+            <value>The start time.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorDeployment.Finished">
+            <summary>
+            Gets or sets the finish time.
+            </summary>
+            <value>The finish time.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorDeployment.Created">
+            <summary>
+            Gets or sets the create time.
+            </summary>
+            <value>The create time.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorDeployment.Updated">
+            <summary>
+            Gets or sets the update time.
+            </summary>
+            <value>The update time.</value>
+        </member>
+        <member name="T:Cake.AppVeyor.AppVeyorEnvironment">
+            <summary>
+            Environment
+            </summary>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorEnvironment.DeploymentEnvironmentId">
+            <summary>
+            Gets or sets the deployment environment identifier.
+            </summary>
+            <value>The deployment environment identifier.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorEnvironment.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorEnvironment.Provider">
+            <summary>
+            Gets or sets the provider.
+            </summary>
+            <value>The provider.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorEnvironment.Created">
+            <summary>
+            Gets or sets the create time.
+            </summary>
+            <value>The create time.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorEnvironment.Updated">
+            <summary>
+            Gets or sets the update time.
+            </summary>
+            <value>The update time.</value>
+        </member>
+        <member name="T:Cake.AppVeyor.AppVeyorEnvironmentDeployment">
+            <summary>
+            Environment Deployment information.
+            </summary>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorEnvironmentDeployment.Environment">
+            <summary>
+            Gets or sets the environment.
+            </summary>
+            <value>The environment.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorEnvironmentDeployment.Deployment">
+            <summary>
+            Gets or sets the deployment.
+            </summary>
+            <value>The deployment.</value>
+        </member>
+        <member name="T:Cake.AppVeyor.AppVeyorEnvironmentDeployments">
+            <summary>
+            Environment Deployments
+            </summary>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorEnvironmentDeployments.Environment">
+            <summary>
+            Gets or sets the environment.
+            </summary>
+            <value>The environment.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorEnvironmentDeployments.Deployments">
+            <summary>
+            Gets or sets the deployments.
+            </summary>
+            <value>The deployments.</value>
+        </member>
+        <member name="T:Cake.AppVeyor.AppVeyorJob">
+            <summary>
+            Job
+            </summary>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorJob.JobId">
+            <summary>
+            Gets or sets the job identifier.
+            </summary>
+            <value>The job identifier.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorJob.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorJob.AllowFailure">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Cake.AppVeyor.AppVeyorJob"/> allows failure.
+            </summary>
+            <value><c>true</c> if allow failure; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorJob.MessagesCount">
+            <summary>
+            Gets or sets the messages count.
+            </summary>
+            <value>The messages count.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorJob.CompilationMessagesCount">
+            <summary>
+            Gets or sets the compilation messages count.
+            </summary>
+            <value>The compilation messages count.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorJob.CompilationErrorsCount">
+            <summary>
+            Gets or sets the compilation errors count.
+            </summary>
+            <value>The compilation errors count.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorJob.CompilationWarningsCount">
+            <summary>
+            Gets or sets the compilation warnings count.
+            </summary>
+            <value>The compilation warnings count.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorJob.TestsCount">
+            <summary>
+            Gets or sets the tests count.
+            </summary>
+            <value>The tests count.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorJob.PassedTestsCount">
+            <summary>
+            Gets or sets the passed tests count.
+            </summary>
+            <value>The passed tests count.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorJob.FailedTestsCount">
+            <summary>
+            Gets or sets the failed tests count.
+            </summary>
+            <value>The failed tests count.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorJob.ArtifactsCount">
+            <summary>
+            Gets or sets the artifacts count.
+            </summary>
+            <value>The artifacts count.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorJob.Status">
+            <summary>
+            Gets or sets the status.
+            </summary>
+            <value>The status.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorJob.Started">
+            <summary>
+            Gets or sets the start time.
+            </summary>
+            <value>The start time.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorJob.Finished">
+            <summary>
+            Gets or sets the finish time.
+            </summary>
+            <value>The finish time.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorJob.Created">
+            <summary>
+            Gets or sets the create time.
+            </summary>
+            <value>The create time.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorJob.Updated">
+            <summary>
+            Gets or sets the update time.
+            </summary>
+            <value>The update time.</value>
+        </member>
+        <member name="T:Cake.AppVeyor.AppVeyorProjectBuild">
+            <summary>
+            Project Build
+            </summary>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProjectBuild.Project">
+            <summary>
+            Gets or sets the project.
+            </summary>
+            <value>The project.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProjectBuild.Build">
+            <summary>
+            Gets or sets the build.
+            </summary>
+            <value>The build.</value>
+        </member>
+        <member name="T:Cake.AppVeyor.AppVeyorNuGetFeed">
+            <summary>
+            NuGet Feed
+            </summary>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorNuGetFeed.Id">
+            <summary>
+            Gets or sets the identifier.
+            </summary>
+            <value>The identifier.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorNuGetFeed.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorNuGetFeed.PublishingEnabled">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Cake.AppVeyor.AppVeyorNuGetFeed"/> publishing enabled.
+            </summary>
+            <value><c>true</c> if publishing enabled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorNuGetFeed.Created">
+            <summary>
+            Gets or sets the create time.
+            </summary>
+            <value>The create time</value>
+        </member>
+        <member name="T:Cake.AppVeyor.AppVeyorProjectDeployment">
+            <summary>
+            Project Deployment
+            </summary>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProjectDeployment.Project">
+            <summary>
+            Gets or sets the project.
+            </summary>
+            <value>The project.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProjectDeployment.Deployment">
+            <summary>
+            Gets or sets the deployment.
+            </summary>
+            <value>The deployment.</value>
+        </member>
+        <member name="T:Cake.AppVeyor.AppVeyorProjectDeployments">
+            <summary>
+            Project Deployments
+            </summary>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProjectDeployments.Project">
+            <summary>
+            Gets or sets the project.
+            </summary>
+            <value>The project.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProjectDeployments.Deployments">
+            <summary>
+            Gets or sets the deployments.
+            </summary>
+            <value>The deployments.</value>
+        </member>
+        <member name="T:Cake.AppVeyor.AppVeyorProjectHistory">
+            <summary>
+            Project History
+            </summary>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProjectHistory.Project">
+            <summary>
+            Gets or sets the project.
+            </summary>
+            <value>The project.</value>
+        </member>
+        <member name="P:Cake.AppVeyor.AppVeyorProjectHistory.Builds">
+            <summary>
+            Gets or sets the builds.
+            </summary>
+            <value>The builds.</value>
+        </member>
+    </members>
+</doc>

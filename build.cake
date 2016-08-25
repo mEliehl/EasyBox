@@ -1,5 +1,11 @@
 #tool "nuget:?package=OpenCover"
 #tool "nuget:?package=ReportGenerator"
+#tool coveralls.net
+#tool coveralls.io
+
+#addin nuget:?package=Cake.AppVeyor
+#addin "Cake.FileHelpers"
+#addin Cake.Coveralls
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 //////////////////////////////////////////////////////////////////////
@@ -13,7 +19,7 @@ var configuration = Argument("configuration", "Release");
 
 // Define directories.
 var buildDir = Directory("./bin") + Directory(configuration);
-var artifactsDir = Directory("./artifacts") + Directory(configuration);
+var artifactsDir = Directory("./artifacts");
 //////////////////////////////////////////////////////////////////////
 // TASKS
 //////////////////////////////////////////////////////////////////////
@@ -50,33 +56,44 @@ Task("Build")
         });
     }
 });
-
+ 
 Task("Run-Unit-Tests")
     .IsDependentOn("Build")
     .Does(() =>
 {
     var projects = GetFiles("./test/**/*.xproj");
-    
     foreach(var project in projects)
     {
        var name = testProjectName(project.GetDirectory().FullPath);
-       var dir = Directory(artifactsDir.ToString()) + Directory(name);
-       CreateDirectory(dir);
        OpenCover(tool => {
         tool.DotNetCoreTest(project.GetDirectory().FullPath, new DotNetCoreTestSettings {
                 NoBuild = true,
                 Verbose = false
             });   
         },
-        new FilePath( dir.ToString() + "/result.xml"),
+        new FilePath( artifactsDir.ToString() + "/result.xml"),
         new OpenCoverSettings(){
                 OldStyle = true,
-                Filters = {"+[" + name + "]* -[Test*]*"}
+                Filters = {"+[" + name + "]* -[Test*]*"},
+                ArgumentCustomization = args=>args.Append("-mergeoutput")
         });
-    }    
+    }   
 
-    ReportGenerator(artifactsDir.ToString() + "/**/*.xml",
-     artifactsDir.ToString() + "/report.xml");
+    if(AppVeyor.IsRunningOnAppVeyor)
+    {
+        if (HasEnvironmentVariable("COVERALLS_REPO_TOKEN"))
+        {
+            CoverallsIo(artifactsDir.ToString() + "/result.xml",new CoverallsIoSettings()
+            {
+                RepoToken = EnvironmentVariable("COVERALLS_REPO_TOKEN");
+            });
+        }
+    }
+    else
+    {
+        ReportGenerator(artifactsDir.ToString() + "/**/*.xml",
+        artifactsDir.ToString() + "/report"); 
+    }     
 });
 
 Task("Publish")
