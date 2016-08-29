@@ -57,7 +57,7 @@ Task("Build")
     }
 });
  
-Task("Run-Unit-Tests")
+Task("Run-Tests")
     .IsDependentOn("Build")
     .Does(() =>
 {
@@ -77,8 +77,13 @@ Task("Run-Unit-Tests")
                 Filters = {"+[" + name + "]* -[Test*]*"},
                 ArgumentCustomization = args=>args.Append("-mergeoutput")
         });
-    }   
+    }       
+});
 
+Task("Publish-Test-Results")
+    .IsDependentOn("Run-Tests")
+    .Does(() =>
+{
     if(AppVeyor.IsRunningOnAppVeyor)
     {
         if (HasEnvironmentVariable("COVERALLS_REPO_TOKEN"))
@@ -97,7 +102,7 @@ Task("Run-Unit-Tests")
 });
 
 Task("Publish")
-    .IsDependentOn("Run-Unit-Tests")
+    .IsDependentOn("Publish-Test-Results")
     .Does(() =>
 {
     var projects = GetFiles("./src/api/*.xproj");    
