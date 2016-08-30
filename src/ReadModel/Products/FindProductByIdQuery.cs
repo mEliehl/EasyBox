@@ -22,7 +22,7 @@ namespace ReadModel.Products
             this.productRepository = productRepository;
         }
 
-        public async Task<ProductInfo> HandleAsync(FindProductByIdQuery query)
+        public async Task<ProductInfo> ExecuteAsync(FindProductByIdQuery query)
         {
             var product = await productRepository.Get(query.Id);
             if (product != null)

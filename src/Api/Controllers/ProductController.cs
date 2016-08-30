@@ -31,7 +31,7 @@ namespace Api.Controllers
             try
             {
                 var query = new FindProductByIdQuery(id);
-                var info = await findProductByIdQuery.HandleAsync(query);
+                var info = await findProductByIdQuery.ExecuteAsync(query);
                 if (info == null)
                     return new NotFoundResult();
 

@@ -23,7 +23,7 @@ namespace ReadModel.Test.Products
             await productRepository.Save(product);
             var query = new FindProductByIdQuery(product.Id);
             IQueryHandler<FindProductByIdQuery, ProductInfo> handler = new FindProductByIdQueryHandler(productRepository);
-            var productInfo = await handler.HandleAsync(query);
+            var productInfo = await handler.ExecuteAsync(query);
             Assert.NotNull(productInfo);
             Assert.Equal(productInfo.Id, product.Id);
             Assert.Equal(productInfo.Code, product.Code);
@@ -37,7 +37,7 @@ namespace ReadModel.Test.Products
         {
             var query = new FindProductByIdQuery(Guid.NewGuid());
             IQueryHandler<FindProductByIdQuery, ProductInfo> handler = new FindProductByIdQueryHandler(productRepository);
-            var productInfo = await handler.HandleAsync(query);
+            var productInfo = await handler.ExecuteAsync(query);
             Assert.Null(productInfo);            
         }
     }
