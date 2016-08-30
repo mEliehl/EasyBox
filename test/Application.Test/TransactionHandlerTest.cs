@@ -28,7 +28,7 @@ namespace Application.Test
         {
             public async Task ExecuteAsync(AnyCommand command)
             {
-                await es Task.Factory.StartNew(() => { throw new Exception(); });
+                await Task.Factory.StartNew(() => { throw new Exception(); });
             }
         }
 
