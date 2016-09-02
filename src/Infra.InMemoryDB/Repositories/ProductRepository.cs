@@ -1,15 +1,15 @@
-﻿using Domain.Repositories;
+﻿using Domain.Entities;
+using Domain.Repositories;
 using System;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading.Tasks;
-using Domain.Entities;
 
 namespace Infra.InMemoryDB.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        static IList<Product> products = new List<Product>();
+        static ConcurrentBag<Product> products = new ConcurrentBag<Product>();
 
         public async Task<Product> Get(Guid Id)
         {
@@ -21,8 +21,11 @@ namespace Infra.InMemoryDB.Repositories
             await Task.Factory.StartNew(() =>
             {
                 if (products.Any(p => p.Id == product.Id))
-                    products.Remove(products.FirstOrDefault(p => p.Id == product.Id));
-                products.Add(product);
+                {
+                    var old = products.FirstOrDefault(p => p.Id == product.Id);
+                    old = product;
+                }else
+                    products.Add(product);
             });
         }
     }

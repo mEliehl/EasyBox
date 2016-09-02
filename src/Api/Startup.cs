@@ -31,8 +31,7 @@ namespace Api
             {
                 options.SerializerSettings.ContractResolver =
                 new CamelCasePropertyNamesContractResolver();
-            }); ;
-
+            });
 
             services.AddSingleton<IControllerActivator>(
                 new SimpleInjectorControllerActivator(container));
