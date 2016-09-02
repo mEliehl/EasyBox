@@ -9,7 +9,7 @@ namespace Application.Products
     {
         public ChangeProduct(Guid Id,
             string Code,
-            String Name)
+            string Name)
         {
             this.Id = Id;
             this.Code = Code;

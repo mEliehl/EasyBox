@@ -15,9 +15,12 @@ namespace Api
     {
         readonly Container container;
 
-        public Startup()
+        public Startup(IHostingEnvironment env)
         {
-            container = ApplicationBootstrap.Compose();
+            if(env.IsIntegrationTest())
+                container = CompositionRootBootstrap.BuildForInMemoryDB();
+            else
+                container = CompositionRootBootstrap.BuildForRavenDB();
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -46,7 +49,7 @@ namespace Api
 
             app.UseMvc();
 
-            if (env.IsDevelopment())
+            if (env.IsDevelopment() || env.IsIntegrationTest())
             {
                 app.UseDeveloperExceptionPage();
 

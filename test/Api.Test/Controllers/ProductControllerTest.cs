@@ -15,17 +15,14 @@ namespace Api.Test.Controllers
     public class ProductControllerTest
     {
         readonly Guid ValidId = Guid.NewGuid();
-        readonly Guid InvalidId = Guid.NewGuid();
-
+        
         readonly ProductController controller;
         readonly Mock<ICommandHandler<CreateNewProduct>> createNewProduct;
         readonly Mock<ICommandHandler<ChangeProduct>> changeProduct;
         readonly Mock<IQueryHandler<FindProductByIdQuery, ProductInfo>> findProductByIdQuery;
 
-
         public ProductControllerTest()
         {
-            // Arrange
             createNewProduct = new Mock<ICommandHandler<CreateNewProduct>>();
             changeProduct = new Mock<ICommandHandler<ChangeProduct>>();
             findProductByIdQuery = new Mock<IQueryHandler<FindProductByIdQuery, ProductInfo>>();

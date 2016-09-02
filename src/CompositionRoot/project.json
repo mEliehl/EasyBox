@@ -13,6 +13,10 @@
       "version": "1.0.0-*",
       "target": "project"
     },
+    "Infra.InMemoryDB": {
+      "version": "1.0.0-*",
+      "target": "project"
+    },
     "Application": {
       "version": "1.0.0-*",
       "target": "project"
