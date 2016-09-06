@@ -44,7 +44,7 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(NewProductViewModel viewModel)
+        public async Task<IActionResult> Post([FromBody]NewProductViewModel viewModel)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace Api.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put(ChangeProductViewModel viewModel)
+        public async Task<IActionResult> Put([FromBody]ChangeProductViewModel viewModel)
         {
             try
             {
